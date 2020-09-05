@@ -1,56 +1,92 @@
 <?php
 
-$task1 = 7 % 3;
-$task2= intdiv((7+7.15),1);
-$task3 = sqrt(25);
 
-$text = "Десять негритят пошли купаться в море";
+$study = [1, 2, 3, "dog", "apple", "true"];
 
-$task4 = substr("$text", 41, 16);
-$task5 = substr("$text", 30,2);
-//$task6 = ucwords($text);
-$task6 = mb_convert_case($text, MB_CASE_TITLE, "UTF-8");
-$task7 = mb_strlen($text);
+$study1 = [
+    'one' => 1,
+    'two' => 2,
+    'three' => 3,
+    'four' => 'dog',
+    'five' => 'apple'
+];
 
-$true = true;
-$false = false;
-$three = "three";
-$three_2 = "три";
+$study2 = [
+    1,
+    2,
+    'three' => 3,
+    'dog',
+    'apple'
+];
 
-echo "Задание 1:<br> $task1<br>";
-echo "Задание 2:<br> $task2<br>";
-echo "Задание 3:<br> $task3<br>";
-echo "Задание 4:<br> $task4<br>";
-echo "Задание 5:<br> $task5<br>";
-echo "Задание 6:<br> $task6<br>";
-echo "Задание 7:<br> $task7<br>";
+$study3 = $study  + $study1;
 
-echo "Задание 8:<br>";
-if($true == 1) {
-    echo "True равно 1<br>";
-} else {
-    echo "true не равно 1<br>";
-}
 
-echo "Задание 9:<br>";
-if($false === 0) {
-    echo "false тождественно 0<br>";
-} else {
-    echo "false не дождественно 0<br>";
-}
+//var_export($study3); // вывести массив
 
-echo "Задание 10:<br>";
-if(mb_strlen($three) > mb_strlen($three_2)) {
-    echo "строка three длиннее<br>";
-} else {
-    echo "строка три длиннее<br>";
-}
+//var_export(array_values($study + $study1)); // все ключи преобразует в числовые
 
-echo "Задание 11:<br>";
-if((125 * 13 + 7) > (223 + 28 * 2)) {
-    echo "первое число больше<br>";
-} else {
-    echo "второе число больше<br>";
-}
+//$arr = [
+//    'one' => 1,
+//    'two' => 2,
+//    'three' => 3,
+//];
+//$arr2 = [
+//    'two' => 2,
+//    'three' => 3,
+//    'one' => 1,
+//];
+//$arr3 = [
+//    'three' => 3,
+//    'one' => 1,
+//    'two' => 2,
+//];
+
+
+//echo '<br>'.$arr['one'].'<br>';
+//echo '<br>'.$arr2['one'].'<br>';
+//echo '<br>'.$arr['one'].'<br>';
+//
+//
+//$arr = array_values($arr);
+//$arr2 = array_values($arr2);
+//$arr3 = array_values($arr3);
+//
+//echo '<br>'.$arr[1].'<br>';
+//echo '<br>'.$arr2[1].'<br>';
+//echo '<br>'.$arr3[1].'<br>';
+
+//var_export(array_keys($study2));
+
+//var_export(array_values(array_slice($study, 3)));
+
+
+$arr = [
+    'one' => [
+        'one' => 'one',
+        'two' => 'two',
+        'three' => 'three'
+    ],
+    'two' => [
+        'one' => 'one',
+        'two' => 'two',
+        'three' => 'three'
+    ],
+    'three' => [
+        'one' => 'one',
+        'two' => 'two',
+        'three' => 'three'
+    ]
+];
+
+foreach ($arr as $key => $value){
+    if (is_array($arr[$key])) {
+        foreach ($arr[$key] as $key1 => $value1) {
+            echo $arr[$key][$key1].'<br>';
+        }
+    } else {
+    echo $arr[$key].'<br>';
+    };
+};
 
 
