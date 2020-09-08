@@ -20,10 +20,9 @@ $task1 = count($arr);
 echo 'Количество элементов в массиве $arr: '.$task1.'<br><br><br>';
 
 echo 'Переместим первые 4 элемента в конец массива:<br>';
-array_push($arr, $arr[0], $arr[1], $arr[2], $arr[3]);
-$arr = array_reverse($arr);
-array_splice($arr, 9    );
-$arr = array_reverse($arr);
+$temp1 = array_slice($arr, 0, 4);
+$temp2 = array_splice($arr, 4);
+$arr = array_merge($temp2, $temp1);
 var_export($arr);
 
 $sum = $arr[3] + $arr[4] + $arr[5];
@@ -71,34 +70,28 @@ $task7 = array();
 foreach($Arr as $key => $value){
     if(is_array($Arr[$key])){
         $Arr[$key] = array_values($Arr[$key]);
-        array_push($task7, $Arr[$key][1]);
-    } else {
-
-    };
+        if($Arr[$key][1] != NULL) {
+            array_push($task7, $Arr[$key][1]);
+        }
+    }
 };
 echo '<br><br><br>Выводим все вторые элементы вложенных массивов:<br>';
 var_export($task7);
 
-$counter = 0;
+$counter = count($Arr);
 foreach($Arr as $key => $value){
     if(is_array($Arr[$key])){
         $counter += count($Arr[$key]);
-    } else {
-        $counter++;
     }
 }
 
 echo '<br><br><br>В массиве $Arr '.$counter.' элементов<br>';
 
-$sum = 0;
-
+$sum = array_sum($Arr);
 foreach ($Arr as $key => $value) {
     if(is_array($Arr[$key])){
-        foreach ($Arr[$key] as $key1 => $value1){
-            $sum += $Arr[$key][$key1];
-        }
-    } else {
-        $sum += $Arr[$key];
+        $sum += array_sum($Arr[$key]);
     }
 }
+
 echo '<br><br><br>Сумма значений всех элементов массива $Arr = '.$sum;
