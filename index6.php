@@ -21,7 +21,7 @@ echo 'Количество элементов в массиве $arr: '.$task1.'
 
 echo 'Переместим первые 4 элемента в конец массива:<br>';
 $temp1 = array_slice($arr, 0, 4);
-$temp2 = array_splice($arr, 4);
+$temp2 = array_slice($arr, 4);
 $arr = array_merge($temp2, $temp1);
 var_export($arr);
 
