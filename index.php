@@ -29,14 +29,14 @@ function task2($data = NULL)
                 $counter++;
             }
         }
-        echo 'В строке '.$counter.' раз встречается символ b<br>';
+        return $counter;
     } else {
         return false;
     }
 }
 
-task2("Hello world!");
-task2("black bear");
+echo task2("Hello world!");
+echo task2("black bear");
 
 echo '<br><br><br>';
 
@@ -66,24 +66,16 @@ $Arr = [
     ],
 ];
 
-function sum($data)
+function task3($data)
 {
+    $val = array_sum($data);
     foreach ($data as $value)
     {
         if (is_array($value)) {
-            $data = array_merge(array_values($data), array_values(sum($value)));
+            $val += task3($value);
         }
     }
-    return $data;
-}
-
-function task3($data)
-{
-    if(is_array($data)) {
-        return array_sum(sum($data)).'<br>';
-    } else {
-        echo 'Error. Please input massive <br>';
-    }
+    return $val;
 }
 
 echo task3($Arr);
@@ -96,13 +88,9 @@ echo '<br><br><br>';
 
 
 function task4($big = NULL, $small = NULL)
-{
-    if ($big === NULL && $small === 0) {
-        echo 'Error. Input side of squares! <br>';
-    } else if ($big === NULL) {
-       echo 'Error. Input side of big square! <br>';
-    } else if ($small === NULL) {
-        echo 'Error. Input side of small square! <br>';
+{   
+    if ($big === NULL || $small === NULL) {
+        echo 'Error. Input correct sizes <br>';
     }
 
     $temp = floatval(pow($big, 2) / pow($small, 2));
