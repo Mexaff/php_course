@@ -1,5 +1,6 @@
 <?php
 
+
  $a = 5;
  function f1($b)
  {
@@ -41,6 +42,8 @@ function f5($var = NULL)
     $var = f2($var);
     f1($var);
 }
+
+
 
 f5();
 
