@@ -95,7 +95,7 @@ echo '<br><br><br>';
 
 
 
-function f4($big = NULL, $small = NULL)
+function task4($big = NULL, $small = NULL)
 {
     if ($big === NULL && $small === 0) {
         echo 'Error. Input side of squares! <br>';
@@ -110,6 +110,5 @@ function f4($big = NULL, $small = NULL)
 }
 
 
-f4(15,5);
-
+task4(15,5);
 
