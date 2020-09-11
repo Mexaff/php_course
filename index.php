@@ -8,7 +8,6 @@ function task1($data = NULL)
         $temp = gettype($data);
         echo 'Функции передан тип данных ' . $temp . '<br>';
     }
-    
 }
 
 task1();
@@ -88,13 +87,15 @@ echo '<br><br><br>';
 
 
 function task4($big = NULL, $small = NULL)
-{   
+{
     if ($big === NULL || $small === NULL) {
         echo 'Error. Input correct sizes <br>';
+    } else if ($big == 0 || $small == 0) {
+        echo 'Error. Input correct sizes <br>';
+    } else {
+        $temp = floatval(pow($big, 2) / pow($small, 2));
+        echo 'В большой квадрат со стороной ' . $big . ' ед. можно вписать ' . $temp . ' квадратов со стороной ' . $small . ' ед.<br>';
     }
-
-    $temp = floatval(pow($big, 2) / pow($small, 2));
-    echo 'В большой квадрат со стороной '.$big.' ед. можно вписать '.$temp.' квадратов со стороной '.$small.' ед.<br>';
 }
 
 
