@@ -10,6 +10,7 @@ function task1($data = NULL)
     }
 }
 
+
 task1();
 task1(12);
 task1(true);
@@ -100,4 +101,6 @@ function task4($big = NULL, $small = NULL)
 
 
 task4(15,5);
+
+
 
