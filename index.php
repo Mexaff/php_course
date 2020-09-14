@@ -6,3 +6,4 @@
     <a href="homework5.php">Homework 5</a><br>
     <a href="lesson6.php">Lesson 6</a><br>
     <a href="Foo.php">Foo</a><br>
+    <a href="homework6.php">Homework 6</a><br>
