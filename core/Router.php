@@ -5,8 +5,8 @@ namespace core;
 
 class Router
 {
-    public function run()
+    public function run($var)
     {
-        echo 'Hello world!';
+        var_export($var);
     }
 }
