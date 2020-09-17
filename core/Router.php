@@ -5,8 +5,22 @@ namespace core;
 
 class Router
 {
-    public function run($var)
+    protected $var = 'Class properties';
+
+    public function getVar()
     {
-        var_export($var);
+        return $this->var;
+    }
+
+    public function setVar($temp)
+    {
+        $this->var = $temp;
+    }
+
+
+
+    public function run()
+    {
+        var_export($this->getVar());
     }
 }
