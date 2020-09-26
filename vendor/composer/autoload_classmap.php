@@ -6,4 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Core\\ControllerNameParser' => $baseDir . '/core/ControllerNameParser.php',
+    'Core\\Router' => $baseDir . '/core/Router.php',
 );

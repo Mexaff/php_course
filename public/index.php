@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../' . 'vendor/autoload.php';
+include_once 'global.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Core\Router;
 
