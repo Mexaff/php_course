@@ -1,7 +1,7 @@
 {
-  "name": "beejee/test",
+  "name": "test/php_course",
   "type": "project",
-  "description": "The BeeJee test.",
+  "description": "Php lessons",
   "license": "MIT",
   "config": {
     "optimize-autoloader": true,
