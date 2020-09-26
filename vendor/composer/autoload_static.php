@@ -20,11 +20,17 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         ),
     );
 
+    public static $classMap = array (
+        'Core\\ControllerNameParser' => __DIR__ . '/../..' . '/core/ControllerNameParser.php',
+        'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425::$classMap;
 
         }, null, ClassLoader::class);
     }
