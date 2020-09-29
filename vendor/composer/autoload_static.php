@@ -13,6 +13,7 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         ),
         'A' => 
         array (
+            'App\\Controllers\\' => 16,
             'App\\' => 4,
         ),
     );
@@ -21,6 +22,10 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         'Core\\' => 
         array (
             0 => __DIR__ . '/../..' . '/core',
+        ),
+        'App\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Controllers',
         ),
         'App\\' => 
         array (
