@@ -1,6 +1,6 @@
 <?php
 
 return  [
-    '/' => 'index@index',
-    '/404' => 'loos@index',
+    '/first' => 'first/index',
+    '/second' => 'second/index2',
 ];

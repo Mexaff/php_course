@@ -11,6 +11,10 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         array (
             'Core\\' => 5,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -18,9 +22,16 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         array (
             0 => __DIR__ . '/../..' . '/core',
         ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
     );
 
     public static $classMap = array (
+        'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
+        'App\\Controllers\\firstController' => __DIR__ . '/../..' . '/app/Controllers/firstController.php',
+        'App\\Controllers\\secondController' => __DIR__ . '/../..' . '/app/Controllers/secondController.php',
         'Core\\ControllerNameParser' => __DIR__ . '/../..' . '/core/ControllerNameParser.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
     );

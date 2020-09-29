@@ -1,55 +1,55 @@
 <?php
 
-namespace Core;
 
+namespace Core;
 
 class Router
 {
-    private $httpHost;
-    private $requestUri;
     private $routes = [];
-
+    private $requestUri;
     public function __construct()
     {
         $this->setRoutes();
-        $this->setServerParams();
     }
 
     public function setRoutes()
     {
-       $this->routes = include APP_ABSOLUTE_PATH . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . 'Route.php';
+        $this->routes = include APP_ABSOLUTE_PATH . '/Config/Route.php';
     }
-
-//    public function run()
-//    {
-//        var_export($this->requestUri);
-//    }
-
-    public function run()
+    private function getUri()
     {
-        if (array_key_exists($this->requestUri, $this->routes)) {
-            $parser = new ControllerNameParser;
-            $checkController = $parser->parse($this->routes[$this->requestUri]);
-            if ($checkController) {
-
-                $controller = $parser->getController();
-                $contrObj = new $controller();
-                $reflectionController = new \ReflectionClass($parser->getController());
-                $method = $reflectionController->getMethod($parser->getActionName());
-                $method->invokeArgs($contrObj, $this->requestParams);
-            } else {
-                throw new \Exception($parser->getErrorMessage());
-            }
-
+        if (empty( $_SERVER['REQUEST_URI'])) {
+            return '/';
         } else {
-            throw new \Exception('Controller ' . $this->requestUri . ' absent');
+            return $_SERVER['REQUEST_URI'];
         }
     }
-
-
-    private function setServerParams()
+    public function run()
     {
-        $this->httpHost = $_SERVER['HTTP_HOST'];
-        $this->requestUri = $_SERVER['REQUEST_URI'];
+       $this->requestUri = $this->getUri();
+
+       //echo $this->requestUri;
+        foreach ($this->routes as $uriPattern => $path) {
+           if(preg_match("~$uriPattern~", $this->requestUri)){
+
+               $temp = explode('/', $path);
+               $controllerName = array_shift($temp) . 'Controller';
+
+               $actionName = 'action' . ucfirst(array_shift($temp));
+
+               $controllerFile = APP_ABSOLUTE_PATH . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $controllerName . '.php';
+
+               include_once($controllerFile);
+
+               $object = new $controllerName;
+               $result = $object->$actionName();
+               if ($result != null) {
+                   break;
+               }
+
+           }
+       }
     }
+
+
 }
