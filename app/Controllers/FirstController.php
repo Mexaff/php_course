@@ -4,10 +4,11 @@
 namespace App\Controllers;
 
 
-class firstController
+class FirstController
 {
     public function actionIndex()
     {
+        echo 'Hello world! It`s first controller';
         return false;
     }
 }

@@ -26,30 +26,21 @@ class Router
     }
     public function run()
     {
-       $this->requestUri = $this->getUri();
+        $this->requestUri = $this->getUri();
 
-       //echo $this->requestUri;
-        foreach ($this->routes as $uriPattern => $path) {
-           if(preg_match("~$uriPattern~", $this->requestUri)){
+        if(array_key_exists($this->requestUri, $this->routes)) {
 
-               $temp = explode('/', $path);
-               $controllerName = array_shift($temp) . 'Controller';
+
+               $temp = explode('/', $this->routes[$this->requestUri]);
+               $controllerName = ucfirst(array_shift($temp) . 'Controller');
 
                $actionName = 'action' . ucfirst(array_shift($temp));
 
-               $controllerFile = APP_ABSOLUTE_PATH . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . $controllerName . '.php';
+               $controllerPath =  'App\\Controllers\\' . $controllerName;
 
-               include_once($controllerFile);
+               $object = new $controllerPath;
+               $object->$actionName();
 
-               $object = new $controllerName;
-               $result = $object->$actionName();
-               if ($result != null) {
-                   break;
-               }
-
-           }
-       }
+        }
     }
-
-
 }

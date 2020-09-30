@@ -4,15 +4,12 @@
 namespace App\Controllers;
 
 
-class secondController
+class SecondController
 {
     public function actionIndex2()
     {
+        echo 'Hello world! It`s second controller';
         return true;
     }
-
-
-
-
 
 }
