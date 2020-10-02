@@ -42,5 +42,10 @@ class Router
                $object->$actionName();
 
         }
+        else {
+            $controllerPath =  'App\\Controllers\\ErrorController';
+            $object = new $controllerPath;
+            $object->indexError();
+        }
     }
 }

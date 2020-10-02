@@ -13,7 +13,6 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         ),
         'A' => 
         array (
-            'App\\Controllers\\' => 16,
             'App\\' => 4,
         ),
     );
@@ -23,10 +22,6 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         array (
             0 => __DIR__ . '/../..' . '/core',
         ),
-        'App\\Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/Controllers',
-        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -34,9 +29,9 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
     );
 
     public static $classMap = array (
-        'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
-        'App\\Controllers\\firstController' => __DIR__ . '/../..' . '/app/Controllers/firstController.php',
-        'App\\Controllers\\secondController' => __DIR__ . '/../..' . '/app/Controllers/secondController.php',
+        'App\\Controllers\\ErrorController' => __DIR__ . '/../..' . '/app/Controllers/ErrorController.php',
+        'App\\Controllers\\FirstController' => __DIR__ . '/../..' . '/app/Controllers/FirstController.php',
+        'App\\Controllers\\SecondController' => __DIR__ . '/../..' . '/app/Controllers/SecondController.php',
         'Core\\ControllerNameParser' => __DIR__ . '/../..' . '/core/ControllerNameParser.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
     );
