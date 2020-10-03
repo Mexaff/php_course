@@ -6,9 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Controllers\\Controller' => $baseDir . '/app/Controllers/Controller.php',
-    'App\\Controllers\\firstController' => $baseDir . '/app/Controllers/firstController.php',
-    'App\\Controllers\\secondController' => $baseDir . '/app/Controllers/secondController.php',
+    'App\\Controllers\\ErrorController' => $baseDir . '/app/Controllers/ErrorController.php',
+    'App\\Controllers\\FirstController' => $baseDir . '/app/Controllers/FirstController.php',
+    'App\\Controllers\\SecondController' => $baseDir . '/app/Controllers/SecondController.php',
     'Core\\ControllerNameParser' => $baseDir . '/core/ControllerNameParser.php',
     'Core\\Router' => $baseDir . '/core/Router.php',
 );
