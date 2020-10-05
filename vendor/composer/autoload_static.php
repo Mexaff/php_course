@@ -13,6 +13,9 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         ),
         'A' => 
         array (
+            'App\\Controllers\\Social\\' => 23,
+            'App\\Controllers\\Admin\\' => 22,
+            'App\\Controllers\\' => 16,
             'App\\' => 4,
         ),
     );
@@ -22,6 +25,18 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         array (
             0 => __DIR__ . '/../..' . '/core',
         ),
+        'App\\Controllers\\Social\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/controllers/social',
+        ),
+        'App\\Controllers\\Admin\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/controllers/admin',
+        ),
+        'App\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/controllers',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -29,11 +44,18 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
     );
 
     public static $classMap = array (
-        'App\\Controllers\\ErrorController' => __DIR__ . '/../..' . '/app/Controllers/ErrorController.php',
-        'App\\Controllers\\FirstController' => __DIR__ . '/../..' . '/app/Controllers/FirstController.php',
-        'App\\Controllers\\SecondController' => __DIR__ . '/../..' . '/app/Controllers/SecondController.php',
-        'Core\\ControllerNameParser' => __DIR__ . '/../..' . '/core/ControllerNameParser.php',
+        'App\\Controllers\\Admin\\ErrorController' => __DIR__ . '/../..' . '/app/controllers/admin/ErrorController.php',
+        'App\\Controllers\\Admin\\FirstController' => __DIR__ . '/../..' . '/app/controllers/admin/FirstController.php',
+        'App\\Controllers\\Admin\\MainController' => __DIR__ . '/../..' . '/app/controllers/admin/MainController.php',
+        'App\\Controllers\\Admin\\SecondController' => __DIR__ . '/../..' . '/app/controllers/admin/SecondController.php',
+        'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/controllers/Controller.php',
+        'App\\Controllers\\Social\\AboutController' => __DIR__ . '/../..' . '/app/controllers/social/AboutController.php',
+        'App\\Controllers\\Social\\ContactController' => __DIR__ . '/../..' . '/app/controllers/social/ContactController.php',
+        'App\\Controllers\\Social\\DocumentController' => __DIR__ . '/../..' . '/app/controllers/social/DocumentController.php',
+        'App\\Controllers\\Social\\PriceController' => __DIR__ . '/../..' . '/app/controllers/social/PriceController.php',
+        'App\\Controllers\\Social\\RegistrController' => __DIR__ . '/../..' . '/app/controllers/social/RegistrController.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
+        'Core\\View' => __DIR__ . '/../..' . '/core/View.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -32,12 +32,13 @@ class Router
 
 
                $temp = explode('/', $this->routes[$this->requestUri]);
-               $controllerName = ucfirst(array_shift($temp) . 'Controller');
+               $controllerName = ucfirst("$temp[1]Controller");
+              // echo $controllerName.'<br>';
+               $actionName = 'action' . ucfirst($temp[2]);
 
-               $actionName = 'action' . ucfirst(array_shift($temp));
+               $controllerPath =  'App\\Controllers\\' . ucwords($temp[0]) . '\\' . $controllerName;
 
-               $controllerPath =  'App\\Controllers\\' . $controllerName;
-
+               //echo $controllerPath . '<br>';
                $object = new $controllerPath;
                $object->$actionName();
 

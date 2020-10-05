@@ -1,10 +1,11 @@
 <?php
 
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
+use App\Controllers\Controller;
 
-class SecondController
+class SecondController extends Controller
 {
     public function actionIndex2()
     {
