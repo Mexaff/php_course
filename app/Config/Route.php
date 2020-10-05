@@ -1,13 +1,13 @@
 <?php
 
 return  [
-    '/' => 'admin/main/index',
-    '/first' => 'admin/first/index',
-    '/second' => 'admin/second/index2',
-    '/registration' => 'social/registr/index',
-    '/about' => 'social/about/index',
-    '/contact' => 'social/contact/index',
-    '/documents' => 'social/document/index',
-    '/price' => 'social/price/index',
+    '/' => 'Admin/Main@index',
+    '/first' => 'Admin/First@index',
+    '/second' => 'Admin/Second@index2',
+    '/registration' => 'Social/Registr@index',
+    '/about' => 'Social/About@index',
+    '/contact' => 'Social/Contact@index',
+    '/documents' => 'Social/Document@index',
+    '/price' => 'Social/Price@index',
 
 ];

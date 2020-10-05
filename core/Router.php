@@ -30,18 +30,17 @@ class Router
 
         if(array_key_exists($this->requestUri, $this->routes)) {
 
+            $temp = explode('@', $this->routes[$this->requestUri]);
+            $tempPath = $temp[0];
+            $tempAction = $temp[1];
 
-               $temp = explode('/', $this->routes[$this->requestUri]);
-               $controllerName = ucfirst("$temp[1]Controller");
-              // echo $controllerName.'<br>';
-               $actionName = 'action' . ucfirst($temp[2]);
+            $actionName = 'action' . ucwords($tempAction);
+            $Path = str_replace('/', '\\', $tempPath);
 
-               $controllerPath =  'App\\Controllers\\' . ucwords($temp[0]) . '\\' . $controllerName;
+            $controllerPath =  'App\\Controllers\\' . $Path . 'Controller';
 
-               //echo $controllerPath . '<br>';
-               $object = new $controllerPath;
-               $object->$actionName();
-
+            $object = new $controllerPath;
+            $object->$actionName();
         }
         else {
             $controllerPath =  'App\\Controllers\\ErrorController';
