@@ -9,6 +9,6 @@ class RegistrController extends Controller
 {
     public function actionIndex()
     {
-        $this->generate('Social/registr');
+        $this->generate('social','Social/registr');
     }
 }
