@@ -3,10 +3,9 @@
 
 namespace App\Controllers;
 
-
-class ErrorController
+class ErrorController extends Controller
 {
     public function indexError() {
-        http_response_code(404);
+        $this->generate('templates/404');
     }
 }
