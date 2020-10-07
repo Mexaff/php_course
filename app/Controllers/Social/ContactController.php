@@ -9,6 +9,6 @@ class ContactController extends Controller
 {
     public function actionIndex()
     {
-        $this->generate('Social/contact');
+        $this->generate('social','Social/contact');
     }
 }
