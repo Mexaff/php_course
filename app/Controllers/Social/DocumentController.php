@@ -9,6 +9,6 @@ class DocumentController extends Controller
 {
     public function actionIndex()
     {
-        $this->generate('social','Social/documents');
+        $this->generateTemplate('social','Social/documents');
     }
 }
