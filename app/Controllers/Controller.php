@@ -6,8 +6,12 @@ use Core\View;
 
 class Controller
 {
-    public function generate(string $templateName ,string $viewName, array $param = [])
+    public function generateTemplate(string $templateName ,string $viewName, array $param = [])
     {
-        View::generate($templateName, $viewName, $param);
+        View::generateTemplate($templateName, $viewName, $param);
+    }
+    public function generateView(string $viewName, array $param = [])
+    {
+        View::generateView($viewName, $param);
     }
 }

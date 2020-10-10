@@ -17,7 +17,7 @@ class View
      * @throws \Exception
      */
 
-    public static function generate($templateName, $viewName, $data = null)
+    public static function generateTemplate($templateName, $viewName, $data = null)
     {
         $viewPath = PUBLIC_ABSOLUTE_PATH. DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . $viewName . '.php';
         if(is_array($data)) {
@@ -31,6 +31,19 @@ class View
             throw new \Exception('Templates ' . $templates . ' absent');
         }
 
+    }
+    public static function generateView($viewName, $data = null)
+    {
+        $viewPath = PUBLIC_ABSOLUTE_PATH . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . $viewName . '.php';
+        if (is_array($data)) {
+            // преобразуем элементы массива в переменные
+            extract($data);
+        }
+        if (file_exists($viewPath)) {
+            include $viewPath;
+        } else {
+            throw new \Exception('View ' . $viewPath . ' absent');
+        }
     }
 
 }

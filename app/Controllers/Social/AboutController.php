@@ -9,6 +9,6 @@ class AboutController extends Controller
 {
     public function actionIndex()
     {
-        $this->generate('social', 'Social/about');
+        $this->generateTemplate('social', 'Social/about');
     }
 }

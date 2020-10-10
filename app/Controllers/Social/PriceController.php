@@ -9,6 +9,6 @@ class PriceController extends Controller
 {
     public function actionIndex()
     {
-        $this->generate('social','Social/price');
+        $this->generateTemplate('social','Social/price');
     }
 }

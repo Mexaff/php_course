@@ -8,6 +8,6 @@ class MainController extends Controller
 {
     public function actionIndex()
     {
-        $this->generate('social' ,'social/index');
+        $this->generateTemplate('social' ,'social/index');
     }
 }
