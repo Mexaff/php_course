@@ -39,6 +39,7 @@ class ComposerStaticInitf4e9d9266f1b19b28f84e8fb19629425
         'App\\Controllers\\Social\\DocumentController' => __DIR__ . '/../..' . '/app/Controllers/Social/DocumentController.php',
         'App\\Controllers\\Social\\PriceController' => __DIR__ . '/../..' . '/app/Controllers/Social/PriceController.php',
         'App\\Controllers\\Social\\RegistrController' => __DIR__ . '/../..' . '/app/Controllers/Social/RegistrController.php',
+        'Core\\Database\\Connecter' => __DIR__ . '/../..' . '/core/Database/Connecter.php',
         'Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
         'Core\\View' => __DIR__ . '/../..' . '/core/View.php',
     );
