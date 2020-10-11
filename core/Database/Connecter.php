@@ -6,28 +6,35 @@ namespace Core\Database;
 
 class Connecter
 {
-    protected $config = [];
+    private $config = [];
 
     public function __constructor()
     {
-        $this->set_config();
+        $this->setConfig();
     }
 
-    public function set_config()
+    public function setConfig()
     {
-        $this->config =  include APP_ABSOLUTE_PATH . '/Config/DB.php';
+        $this->config = include APP_ABSOLUTE_PATH . DIRECTORY_SEPARATOR . 'Config/DB.php';
     }
 
     public function connectDB()
     {
-        $connect = false;
-        if(is_array($this->config) && !empty($this->config)) {
+//        if(is_array($this->config) && !empty($this->config)) {
+            var_export($this->config);
+            echo '<br>';
             extract($this->config);
+            var_export($host);
+//            $temp = array_values($this->config);
+//            $host = $temp[0];
+//            $user = $temp[1];
+//            $password = $temp[2];
             $connect =  mysqli_connect($host, $user, $password);
-        }
-
-        return $connect;
-
+            var_export($connect);
+//            return $connect;
+//        } else {
+//            return false;
+//        }
     }
 
 

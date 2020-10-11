@@ -17,6 +17,7 @@ return array(
     'App\\Controllers\\Social\\PriceController' => $baseDir . '/app/Controllers/Social/PriceController.php',
     'App\\Controllers\\Social\\RegistrController' => $baseDir . '/app/Controllers/Social/RegistrController.php',
     'Core\\Database\\Connecter' => $baseDir . '/core/Database/Connecter.php',
+    'Core\\Database\\Insert' => $baseDir . '/core/Database/Insert.php',
     'Core\\Router' => $baseDir . '/core/Router.php',
     'Core\\View' => $baseDir . '/core/View.php',
 );
