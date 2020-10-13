@@ -9,8 +9,6 @@ class MainController extends Controller
 {
     public function actionIndex()
     {
-        var_export(APP_ABSOLUTE_PATH . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . 'DB.php');
-        echo '<br>';
         $this->connectDatabase();
         $this->generateTemplate('social' ,'social/index');
     }
