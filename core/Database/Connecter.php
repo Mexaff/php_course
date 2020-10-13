@@ -23,7 +23,7 @@ class Connecter
        if(is_array($this->config) && !empty($this->config)) {
 
             extract($this->config);
-            $connect =  mysqli_connect($host, $user, $password);
+            $connect =  mysqli_connect($host, $user, $password, $nameBD);
 
             return $connect;
 
