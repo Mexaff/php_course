@@ -4,6 +4,9 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
 use Core\Database\Connecter;
+use Core\Database\Delete;
+use Core\Database\Insert;
+use Core\Database\Update;
 
 class MainController extends Controller
 {
@@ -14,13 +17,27 @@ class MainController extends Controller
     }
     public function connectDatabase()
     {
-        $dbconnecter = new Connecter();
-        $temp = $dbconnecter->connectDB();
-        if($temp) {
-            echo 'Connect successful<br>';
-            var_export($temp);
-        } else {
-            echo 'Connect failed<br>';
-        }
+//        $temp = new Insert();
+//        $temp->setTableName('roles');
+//        $temp->setCondition([
+//            'role_name' => 'admin'
+//        ]);
+//        $temp->execute();
+
+//        $temp = new Update();
+//        $temp->setTableName('roles');
+//        $temp->setCondition([
+//            'role_name' => 'user'
+//       ], 1);
+//        $temp->execute();
+
+
+//        $temp = new Delete();
+//        $temp->setTableName('roles');
+//        $temp->setCondition(2);
+//        $temp->execute();
+
+
     }
+
 }
