@@ -4,15 +4,17 @@
 namespace Core\Database;
 
 
-class Insert
+class Update
 {
     private $connector;
 
-    protected $columns = '';
-
     protected $tableName = '';
 
-    protected $values = '';
+    protected $columns = '';
+
+    protected $valueString = '';
+
+    protected $id = 0;
 
     public function __construct()
     {
@@ -25,25 +27,23 @@ class Insert
         $this->tableName = $name;
     }
 
-
-    public function setCondition(array $condition)
+    public function setCondition(array $condition, $id)
     {
         if(!empty($condition)) {
             foreach($condition as $columnName => $value) {
                 if(empty($this->columns)) {
-                    $this->columns = $columnName;
-                    $this->values = '\'' . $value . '\'';
+                    $this->valueString = $columnName . '= \'' . $value . '\'';
                 } else {
-                    $this->columns = ', ' . $columnName;
-                    $this->values = ', ' . '\'' . $value . '\'';
+                    $this->valueString = ',' . $columnName . '= \'' . $value . '\'';
                 }
             }
+            $this->id = '\'' . $id . '\'';
         }
     }
 
     private function setString()
     {
-        return 'INSERT INTO ' . $this->tableName . ' (' . $this->columns . ') VALUES (' .  $this->values . ')';
+        return 'UPDATE ' . $this->tableName . ' SET ' . $this->valueString . ' WHERE id = ' . $this->id;
     }
 
     public function execute()
@@ -51,4 +51,5 @@ class Insert
         //var_export($this->setString());
         return mysqli_query($this->connector, $this->setString());
     }
+
 }
