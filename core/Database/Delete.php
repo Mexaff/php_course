@@ -26,19 +26,19 @@ class Delete
     public function setCondition($id)
     {
 
-            $this->id = '\'' . $id . '\'';
+            $this->id = $id;
 
     }
 
-    private function setString()
+    private function GetSqlString()
     {
         return 'DELETE FROM ' . $this->tableName . ' WHERE id = ' . $this->id;
     }
 
     public function execute()
     {
-        //var_export($this->setString());
-        return mysqli_query($this->connector, $this->setString());
+        //var_export($this->GetSqlString());
+        return mysqli_query($this->connector, $this->GetSqlString());
     }
 
 }

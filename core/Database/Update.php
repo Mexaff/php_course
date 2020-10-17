@@ -41,15 +41,15 @@ class Update
         }
     }
 
-    private function setString()
+    private function GetSqlString()
     {
         return 'UPDATE ' . $this->tableName . ' SET ' . $this->valueString . ' WHERE id = ' . $this->id;
     }
 
     public function execute()
     {
-        //var_export($this->setString());
-        return mysqli_query($this->connector, $this->setString());
+        //var_export($this- GetSqlString());
+        return mysqli_query($this->connector, $this- GetSqlString());
     }
 
 }
