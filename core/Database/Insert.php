@@ -34,21 +34,21 @@ class Insert
                     $this->columns = $columnName;
                     $this->values = '\'' . $value . '\'';
                 } else {
-                    $this->columns = ', ' . $columnName;
-                    $this->values = ', ' . '\'' . $value . '\'';
+                    $this->columns .= ', ' . $columnName;
+                    $this->values .= ', ' . '\'' . $value . '\'';
                 }
             }
         }
     }
 
-    private function setString()
+    private function GetSqlString()
     {
         return 'INSERT INTO ' . $this->tableName . ' (' . $this->columns . ') VALUES (' .  $this->values . ')';
     }
 
     public function execute()
     {
-        //var_export($this->setString());
-        return mysqli_query($this->connector, $this->setString());
+        //var_export($this->GetSqlString());
+        return mysqli_query($this->connector, $this->GetSqlString());
     }
 }
