@@ -6,19 +6,12 @@ namespace Core\Database;
 
 class Insert
 {
-    private $connector;
 
     protected $columns = '';
 
     protected $tableName = '';
 
     protected $values = '';
-
-    public function __construct()
-    {
-        $temp = new Connecter();
-        $this->connector = $temp->connectDB();
-    }
 
     public function setTableName(string $name)
     {
@@ -41,14 +34,9 @@ class Insert
         }
     }
 
-    private function GetSqlString()
+    public function GetSqlString()
     {
         return 'INSERT INTO ' . $this->tableName . ' (' . $this->columns . ') VALUES (' .  $this->values . ')';
     }
 
-    public function execute()
-    {
-        //var_export($this->GetSqlString());
-        return mysqli_query($this->connector, $this->GetSqlString());
-    }
 }

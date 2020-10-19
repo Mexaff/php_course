@@ -7,8 +7,6 @@ namespace Core\Database;
 class Select
 {
 
-    private $connector;
-
     protected $tableName = '';
 
     protected $column = '*';
@@ -21,11 +19,6 @@ class Select
     protected $where;
     protected $group;
 
-    public function __construct()
-    {
-        $temp = new Connecter();
-        $this->connector = $temp->connectDB();
-    }
 
     public function setTableName(string $name)
     {
@@ -52,6 +45,7 @@ class Select
     {
         $this->where = $where;
     }
+
     public function setGroupBy(string $group)
     {
         $this->group = $group;
@@ -86,7 +80,7 @@ class Select
     }
 
 
-    private function GetSqlString()
+    public function GetSqlString()
     {
         $sql = 'SELECT ' . $this->column . ' FROM ' . $this->tableName;
         if(!empty($this->join)) {
@@ -106,11 +100,6 @@ class Select
         if(!empty($this->limit)) {
             $sql .=   ' LIMIT ' . $this->limit;
         }
-    }
-
-    public function execute()
-    {
-        //var_export($this->GetSqlString());
-        return mysqli_query($this->connector, $this->GetSqlString());
+        return $sql;
     }
 }
