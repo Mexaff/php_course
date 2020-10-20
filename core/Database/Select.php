@@ -74,8 +74,11 @@ class Select
         }
     }
 
-    public function setJoin(string $type, string $tableName, string $condition)
+    public function setJoin(string $tableName, string $condition, string $type = null)
     {
+        if(is_null($type)) {
+            $type = 'INNER';
+        }
         $this->join[] = $type . ' JOIN ' .  $tableName . ' ON ' . $condition;
     }
 
