@@ -18,13 +18,13 @@ class MainController extends Controller
     }
     public function connectDatabase()
     {
-        $temp = new DBcontroller('roles');
-        $temp->update([
-            'role_name' => 'user'
-        ]);
-        //$temp->WhereID(2);
-        $temp->Where('id=1');
-        $temp->execute();
+//        $temp = new DBcontroller('roles');
+//        $temp->update([
+//            'role_name' => 'user'
+//        ]);
+//        //$temp->WhereID(2);
+//        $temp->Where('id=1');
+//        $temp->execute();
 
 
 //        $temp = new DBcontroller('roles');
