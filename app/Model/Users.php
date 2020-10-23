@@ -2,7 +2,11 @@
 
 
 namespace App\Model;
-use Core\Database\DBcontroller;
+
+use Core\Database\Select;
+use Core\Database\Delete;
+use Core\Database\Insert;
+use Core\Database\Update;
 
 class Users
 {
@@ -22,37 +26,70 @@ class Users
         return $this->tableName;
     }
 
-    public function saveUser(array $condition)
+    public function saveRole(array $condition)
     {
-        //unset('id')
-        //array['id']
-    }
-
-    public function deleteUser()
-    {
-
-    }
-
-    public function getUser(int $id)
-    {
-        if($id > 0) {
-            $select = new Select();
-            $select->setTableName($this->tableName);
-            $select->where('id=' . $id);
-            $select->setJoin('roles', 'users.role=role.id');
-            $select->execute();
+        if(!empty($condition)) {
+            $this->firstname = $condition['firstname'];
+            $this->secondname = $condition['secondname'];
+            $this->email = $condition['email'];
+            $this->login = $condition['login'];
+            $this->password = $condition['password'];
+            $this->role = $condition['role'];
+            if (array_key_exists('id', $condition)) {
+                $this->id = $condition['id'];
+                $update = new Update();
+                $update->setTableName($this->tableName);
+                $update->setCondition([
+                    'id' => $this->id,
+                    'firstname' => $this->firstname,
+                    'secondname' => $this->secondname,
+                    'email' => $this->email,
+                    'login' => $this->login,
+                    'password' => $this->password,
+                    'role' => $this->role,
+                ]);
+                $update->where('id=' . $this->id);
+                $update->execute();
+            } else {
+                $insert = new Insert();
+                $insert->setTableName($this->tableName);
+                $insert->setCondition([
+                    'firstname' => $this->firstname,
+                    'secondname' => $this->secondname,
+                    'email' => $this->email,
+                    'login' => $this->login,
+                    'password' => $this->password,
+                    'role' => $this->role,
+                ]);
+                $insert->execute();
+            }
         }
     }
 
-    public function getsUser(array $ids = [])
+    public function deleteRole(int $id)
+    {
+        $delete = new Delete();
+        $delete->setTableName($this->tableName);
+        $delete->where('id=' . $id);
+        $delete->execute();
+    }
+
+    public function getRole(int $id)
+    {
+        if ($id > 0) {
+            $select = new Select();
+            $select->setTableName($this->tableName);
+            $select->setWhere('id=' . $id);
+            $select->execute();
+        }
+    }
+    
+    public function getRoles(array $ids = [])
     {
         $select = new Select();
         $select->setTableName($this->tableName);
-        $select->where();
-        $select->setJoin('roles', 'users.role=role.id');
+        $select->setWhere($ids);
         $select->execute();
     }
-
-
 
 }

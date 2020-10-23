@@ -6,8 +6,8 @@ namespace Core\Database;
 
 class Where
 {
-    private $where;
-    private $columns;
+    private $where = '';
+    private $addWhere = '';
 
     public function setWhere(string $temp)
     {
@@ -17,9 +17,13 @@ class Where
     public function setWhereArray(array $condition)
     {
         if(!empty($condition)) {
-            foreach($condition as $columnName => $value) {
-                if(empty($this->columns)) {
-                    $this->where = $columnName . '=' . $value;
+            foreach($condition as $key => $value) {
+                if(empty($this->where)) {
+                    $this->where = $key . '=' . $value;
+                } else {
+                    if(empty($this->addWhere)) {
+                        $this->addWhere = $key . '=' . $value;
+                    }
                 }
             }
         }

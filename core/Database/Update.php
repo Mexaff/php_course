@@ -14,6 +14,13 @@ class Update
 
     protected $valueString = '';
 
+    protected $where = '';
+
+    public function __construct()
+    {
+        $temp = new Connecter();
+        $this->connector = $temp->connectDB();
+    }
     public function setTableName(string $name)
     {
         $this->tableName = $name;
@@ -32,9 +39,22 @@ class Update
         }
     }
 
+    public function where(string $str)
+    {
+        if(empty($this->where)) {
+            $this->where = ' WHERE ' . $str;
+        } else {
+            $this->where .= $str;
+        }
+    }
+
    public function GetSqlString()
     {
-        return 'UPDATE ' . $this->tableName . ' SET ' . $this->valueString;
+        return 'UPDATE ' . $this->tableName . ' SET ' . $this->valueString . $this->where;
+    }
+    public function execute()
+    {
+        return mysqli_query($this->connector, $this->GetSqlString());
     }
 
 }

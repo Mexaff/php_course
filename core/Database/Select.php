@@ -4,6 +4,8 @@
 namespace Core\Database;
 
 
+use function Couchbase\fastlzDecompress;
+
 class Select
 {
 
@@ -41,9 +43,19 @@ class Select
     }
 
 
-    public function setWhere(string $where)
+    public function setWhere($where)
     {
-        $this->where = $where;
+        if(is_array($where))
+        {
+            foreach ($where as $key => $value ) {
+                if(is_array($value)) {
+                    $temp = implode (', ', $value);
+                    $this->where .= ' WHERE ' . $key  . ' IN [' . $temp . ']';
+                }
+            }
+        } else {
+            $this->where = $where;
+        }
     }
 
     public function setGroupBy(string $group)
@@ -104,5 +116,9 @@ class Select
             $sql .=   ' LIMIT ' . $this->limit;
         }
         return $sql;
+    }
+    public function execute()
+    {
+        return mysqli_query($this->connector, $this->GetSqlString());
     }
 }
