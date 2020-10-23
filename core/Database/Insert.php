@@ -12,12 +12,17 @@ class Insert
     protected $tableName = '';
 
     protected $values = '';
+    protected $connector;
 
     public function setTableName(string $name)
     {
         $this->tableName = $name;
     }
-
+    public function __construct()
+    {
+        $temp = new Connecter();
+        $this->connector = $temp->connectDB();
+    }
 
     public function setCondition(array $condition)
     {
@@ -39,4 +44,9 @@ class Insert
         return 'INSERT INTO ' . $this->tableName . ' (' . $this->columns . ') VALUES (' .  $this->values . ')';
     }
 
+    public function execute()
+    {
+        var_export($this->GetSqlString());
+        return mysqli_query($this->connector, $this->GetSqlString());
+    }
 }

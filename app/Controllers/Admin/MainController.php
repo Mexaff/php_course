@@ -8,6 +8,8 @@ use Core\Database\Delete;
 use Core\Database\Insert;
 use Core\Database\Update;
 use Core\Database\DBcontroller;
+use App\Model\Users;
+use App\Model\Roles;
 
 class MainController extends Controller
 {
@@ -18,6 +20,19 @@ class MainController extends Controller
     }
     public function connectDatabase()
     {
+        $users = new Users();
+        $users->saveRole([
+            'role_name' => 'test_user',
+            'firstname' => 'Denys',
+            'secondname' => 'Hordiiuk',
+            'email' => 'a@a.com',
+            'login' => 'login',
+            'password' => 'pass',
+            'role' => '3',
+        ]);
+
+
+
 //        $temp = new DBcontroller('roles');
 //        $temp->update([
 //            'role_name' => 'user'
