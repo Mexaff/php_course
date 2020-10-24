@@ -7,27 +7,36 @@ namespace Core\Database;
 class Where
 {
     private $where = '';
-    private $addWhere = '';
 
-    public function setWhere(string $temp)
+    public function setWhere(array $condition)
     {
-        $this->where = $temp;
-    }
 
-    public function setWhereArray(array $condition)
-    {
-        if(!empty($condition)) {
-            foreach($condition as $key => $value) {
-                if(empty($this->where)) {
-                    $this->where = $key . '=' . $value;
+            if(is_array($condition)) {
+                if (!$this->checkSingleCondition($condition)) {
+                    trigger_error('Incorrect data in "Where"');
                 } else {
-                    if(empty($this->addWhere)) {
-                        $this->addWhere = $key . '=' . $value;
+                    if (empty($this->where)) {
+                        $this->where = $condition[0] . $condition[1] . $condition[2];
+                    } else {
+                        $this->where .= ' AND ' . $condition[0] . $condition[1] . $condition[2];
                     }
                 }
             }
+
+    }
+
+    public function OrWhere($condition)
+    {
+        if(is_array($condition)) {
+            if (!$this->checkSingleCondition($condition)) {
+                trigger_error('Incorrect data in "Where"');
+            } else {
+                    $this->where .= ' OR ' . $condition[0] . $condition[1] . $condition[2];
+
+            }
         }
     }
+
 
     public function stringWhere()
     {
@@ -35,5 +44,21 @@ class Where
             return ' WHERE ' . $this->where;
         }
     }
+
+
+
+    private function checkSingleCondition(array $condition)
+    {
+        $result = true;
+        if(!empty($condition)) {
+            if (empty($condition[0])) $result = false;
+            elseif (empty($condition[1])) $result = false;
+            elseif (empty($condition[2])) $result = false;
+            elseif (!empty($condition[3])) $result = false;
+        }
+        return $result;
+    }
+
+
 
 }

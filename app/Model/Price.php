@@ -34,7 +34,7 @@ class Contacts
                     'name' => $this->name,
                     'price' => $this->price,
                 ]);
-                $update->where('id=' . $this->id);
+                $update->setWhere(['id','=', $this->id]);
                 $update->execute();
             } else {
                 $insert = new Insert();
@@ -52,7 +52,7 @@ class Contacts
     {
         $delete = new Delete();
         $delete->setTableName($this->tableName);
-        $delete->where('id=' . $id);
+        $delete->setWhere(['id','=', $id]);
         $delete->execute();
     }
 
@@ -61,7 +61,7 @@ class Contacts
         if ($id > 0) {
             $select = new Select();
             $select->setTableName($this->tableName);
-            $select->setWhere('id=' . $id);
+            $select->setWhere(['id','=', $id]);
             $select->execute();
         }
     }
