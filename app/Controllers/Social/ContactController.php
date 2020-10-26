@@ -4,11 +4,14 @@
 namespace App\Controllers\Social;
 
 use App\Controllers\Controller;
+use App\Model\Contacts;
 
 class ContactController extends Controller
 {
     public function actionIndex()
     {
-        $this->generateTemplate('social','Social/contact');
+        $contact = new Contacts();
+        $data = $contact->getContact(1);
+        $this->generateTemplate('social','Social/contact', $data);
     }
 }

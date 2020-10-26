@@ -16,22 +16,21 @@ class MainController extends Controller
     public function actionIndex()
     {
         $users = new Users();
-        $data = $users->getUser(1);
-        $this->connectDatabase();
+        $data = $users->getUsers();
+
         $this->generateTemplate('social' ,'social/index', $data);
     }
     public function connectDatabase()
     {
-//        $users = new Users();
-//        $users->saveRole([
-//            'role_name' => 'test_user',
-//            'firstname' => 'Denys',
-//            'secondname' => 'Hordiiuk',
-//            'email' => 'a@a.com',
-//            'login' => 'login',
-//            'password' => 'pass',
-//            'role' => '3',
-//        ]);
+        $users = new Users();
+        $users->saveUser([
+            'firstname' => 'Andrew',
+            'secondname' => 'Yarovoy',
+            'email' => 'b@b.com',
+            'login' => 'andrey',
+            'password' => 'apple',
+            'role' => '3',
+        ]);
 
     }
 

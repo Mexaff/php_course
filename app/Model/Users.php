@@ -80,8 +80,8 @@ class Users
             $select = new Select();
             $select->setTableName($this->tableName);
             $select->setWhere(['id','=', $id]);
-            $return = $select->execute();
-            var_export($return); echo '<br>';
+            $return = $select->execute()->fetch_assoc();
+            //var_dump((array)$return); echo '<br>';
             return $return;
         }
     }
@@ -93,12 +93,14 @@ class Users
      *       ['id','=', 'number'],
      *      ]
      */
-    public function getUsers(array $ids = [])
+    public function getUsers()
     {
         $select = new Select();
         $select->setTableName($this->tableName);
-        $select->setWhere($ids);
-        $select->execute();
+        //$select->setWhere(['id', '=', '*']);
+        $return = $select->execute();
+        return $return;
+        var_dump($return);
     }
 
 }
