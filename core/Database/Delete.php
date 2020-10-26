@@ -26,14 +26,19 @@ class Delete
         return $sql;
     }
 
-    public function where(string $str)
+    public function setWhere(array $condition)
     {
-        if(empty($this->where)) {
-            $this->where = ' WHERE ' . $str;
-        } else {
-            $this->where .= $str;
-        }
+        $where = new Where;
+        $where->setWhere($condition);
+        $this->where = $where->stringWhere();
     }
+    public function orWhere(array $condition)
+    {
+        $where = new Where;
+        $where->orWhere($condition);
+        $this->where .= $where->stringWhere();
+    }
+
     public function execute()
     {
         return mysqli_query($this->connector, $this->GetSqlString());

@@ -6,9 +6,9 @@ use Core\View;
 
 class Controller
 {
-    public function generateTemplate(string $templateName ,string $viewName, array $param = [])
+    public function generateTemplate(string $templateName ,string $viewName, $data = null)
     {
-        View::generateTemplate($templateName, $viewName, $param);
+        View::generateTemplate($templateName, $viewName, $data);
     }
     public function generateView(string $viewName, array $param = [])
     {

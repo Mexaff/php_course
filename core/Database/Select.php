@@ -8,7 +8,7 @@ use function Couchbase\fastlzDecompress;
 
 class Select
 {
-
+    protected $connector;
     protected $tableName = '';
 
     protected $column = '*';
@@ -18,9 +18,14 @@ class Select
     protected $limit = '';
     protected $join;
 
-    protected $where;
+    protected $where = '';
     protected $group;
 
+    public function __construct()
+    {
+        $temp = new Connecter();
+        $this->connector = $temp->connectDB();
+    }
 
     public function setTableName(string $name)
     {
@@ -43,19 +48,17 @@ class Select
     }
 
 
-    public function setWhere($where)
+    public function setWhere(array $condition)
     {
-        if(is_array($where))
-        {
-            foreach ($where as $key => $value ) {
-                if(is_array($value)) {
-                    $temp = implode (', ', $value);
-                    $this->where .= ' WHERE ' . $key  . ' IN [' . $temp . ']';
-                }
-            }
-        } else {
-            $this->where = $where;
-        }
+        $where = new Where;
+        $where->setWhere($condition);
+        $this->where = $where->stringWhere();
+    }
+    public function orWhere(array $condition)
+    {
+        $where = new Where;
+        $where->orWhere($condition);
+        $this->where .= $where->stringWhere();
     }
 
     public function setGroupBy(string $group)
@@ -104,7 +107,7 @@ class Select
             }
         }
         if(!empty($this->where)) {
-            $sql .=   ' WHERE ' . $this->where;
+            $sql .=   ' ' . $this->where;
         }
         if(!empty($this->group)) {
             $sql .=   ' GROUP BY ' . $this->group;
@@ -115,10 +118,12 @@ class Select
         if(!empty($this->limit)) {
             $sql .=   ' LIMIT ' . $this->limit;
         }
+
         return $sql;
     }
     public function execute()
     {
-        return mysqli_query($this->connector, $this->GetSqlString());
+        var_export($this->GetSqlString());
+        return mysqli_query($this->connector,  $this->GetSqlString());
     }
 }

@@ -32,7 +32,7 @@ class About
                     'id' => $this->id,
                     'information' => $this->information,
                 ]);
-                $update->where('id=' . $this->id);
+                $update->setWhere(['id','=', $this->id]);
                 $update->execute();
             } else {
                 if (array_key_exists('information', $condition)) {
@@ -52,7 +52,7 @@ class About
     {
         $delete = new Delete();
         $delete->setTableName($this->tableName);
-        $delete->where('id=' . $id);
+        $delete->setWhere(['id','=', $id]);
         $delete->execute();
     }
 
@@ -61,7 +61,7 @@ class About
         if ($id > 0) {
             $select = new Select();
             $select->setTableName($this->tableName);
-            $select->setWhere('id=' . $id);
+            $select->setWhere(['id','=', $id]);
             $select->execute();
         }
     }

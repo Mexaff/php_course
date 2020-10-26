@@ -46,7 +46,6 @@ class Insert
 
     public function execute()
     {
-        var_export($this->GetSqlString());
         return mysqli_query($this->connector, $this->GetSqlString());
     }
 }

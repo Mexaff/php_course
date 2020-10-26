@@ -26,7 +26,7 @@ class Users
         return $this->tableName;
     }
 
-    public function saveRole(array $condition)
+    public function saveUser(array $condition)
     {
         if(!empty($condition)) {
             $this->firstname = $condition['firstname'];
@@ -48,7 +48,7 @@ class Users
                     'password' => $this->password,
                     'role' => $this->role,
                 ]);
-                $update->where('id=' . $this->id);
+                $update->setWhere(['id','=', $this->id]);
                 $update->execute();
             } else {
                 $insert = new Insert();
@@ -66,30 +66,41 @@ class Users
         }
     }
 
-    public function deleteRole(int $id)
+    public function deleteUser(int $id)
     {
         $delete = new Delete();
         $delete->setTableName($this->tableName);
-        $delete->where('id=' . $id);
+        $delete->setWhere(['id','=', $id]);
         $delete->execute();
     }
 
-    public function getRole(int $id)
+    public function getUser(int $id)
     {
         if ($id > 0) {
             $select = new Select();
             $select->setTableName($this->tableName);
-            $select->setWhere('id=' . $id);
-            $select->execute();
+            $select->setWhere(['id','=', $id]);
+            $return = $select->execute()->fetch_assoc();
+            //var_dump((array)$return); echo '<br>';
+            return $return;
         }
     }
-    
-    public function getRoles(array $ids = [])
+
+    /**
+     * @param array $ids
+     * $ids [['id','=', 'number'],
+     *       ['id','=', 'number'],
+     *       ['id','=', 'number'],
+     *      ]
+     */
+    public function getUsers()
     {
         $select = new Select();
         $select->setTableName($this->tableName);
-        $select->setWhere($ids);
-        $select->execute();
+        //$select->setWhere(['id', '=', '*']);
+        $return = $select->execute();
+        return $return;
+        var_dump($return);
     }
 
 }
